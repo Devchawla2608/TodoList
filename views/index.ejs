@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+<h1>TODO LIST</h1>
+
+<div class="container"> 
+    <div class="upper-info ">
+        <form action="/create" method="post">
+            <input type="text" placeholder="What do you need to do" name="description">
+
+            <div class="center ">
+                <select name="type">
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="School">School</option>
+                    <option value="College">College</option>
+                </select>
+                <input type="date" name="date">
+            </div>
+            <div class="buttons ">
+                <button class="btn">ADD TASK</button>
+               
+            </div>
+        </form>
+    </div>
+
+    <div class="show-result">
+        <ul class="show-result-ul">
+            <% for(let i of todo_list){ %>
+             <li class="myLi">
+                <p><%= i.description %></p>
+                <p><%= i.date %></p>
+                <p><%= i.type %></p>
+              <a href="/destroy/<%= i.id %>" class="btn2">Delete Task</a>
+             </li>
+           <% } %>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+
+</html>
